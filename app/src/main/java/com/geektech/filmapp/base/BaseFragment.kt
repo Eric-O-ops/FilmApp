@@ -29,6 +29,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes layoutI
 
     protected open fun <T> LiveData<Resource<T>>.subscribe(
         onError: (error: String) -> Unit,
+        onLoading:((state: Resource<T>) ->Unit)? = null,
         onSuccess: (data: T) -> Unit
     ) {
         observe(viewLifecycleOwner) {
